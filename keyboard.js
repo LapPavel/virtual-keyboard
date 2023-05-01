@@ -2,323 +2,361 @@ const keyboard = [
   {
     code: 'Backquote',
     func: false,
-    lang: { en: '`', ru: 'ё' },
+    value: { en: '`', ru: 'ё' },
+    altvalue: { en: '~', ru: 'Ё' },
   },
   {
     code: 'Digit1',
     func: false,
-    lang: { en: '1', ru: '1' },
+    value: { en: '1', ru: '1' },
+    altvalue: { en: '!', ru: '!' },
   },
   {
     code: 'Digit2',
     func: false,
-    lang: { en: '2', ru: '2' },
+    value: { en: '2', ru: '2' },
+    altvalue: { en: '@', ru: '"' },
   },
   {
     code: 'Digit3',
     func: false,
-    lang: { en: '3', ru: '3' },
+    value: { en: '3', ru: '3' },
+    altvalue: { en: '#', ru: '№' },
   },
   {
     code: 'Digit4',
     func: false,
-    lang: { en: '4', ru: '4' },
+    value: { en: '4', ru: '4' },
+    altvalue: { en: '$', ru: ';' },
   },
   {
     code: 'Digit5',
     func: false,
-    lang: { en: '5', ru: '5' },
+    value: { en: '5', ru: '5' },
+    altvalue: { en: '%', ru: '%' },
   },
   {
     code: 'Digit6',
     func: false,
-    lang: { en: '6', ru: '6' },
+    value: { en: '6', ru: '6' },
+    altvalue: { en: '^', ru: ':' },
   },
   {
     code: 'Digit7',
     func: false,
-    lang: { en: '7', ru: '7' },
+    value: { en: '7', ru: '7' },
+    altvalue: { en: '&', ru: '?' },
   },
   {
     code: 'Digit8',
     func: false,
-    lang: { en: '8', ru: '8' },
+    value: { en: '8', ru: '8' },
+    altvalue: { en: '*', ru: '*' },
   },
   {
     code: 'Digit9',
     func: false,
-    lang: { en: '9', ru: '9' },
+    value: { en: '9', ru: '9' },
+    altvalue: { en: '(', ru: '(' },
   },
   {
     code: 'Digit0',
     func: false,
-    lang: { en: '0', ru: '0' },
+    value: { en: '0', ru: '0' },
+    altvalue: { en: ')', ru: ")" },
   },
   {
     code: 'Minus',
     func: false,
-    lang: { en: '-', ru: '-' },
+    value: { en: '-', ru: '-' },
+    altvalue: { en: '_', ru: '_'},
   },
   {
     code: 'Equal',
     func: false,
-    lang: { en: '=', ru: '=' },
+    value: { en: '=', ru: '=' },
+    altvalue: { en: '+', ru: '+' },
   },
   {
     code: 'Backspace',
     func: 'backspace',
-    lang: { en: '⌫', ru: '⌫' },
+    value: { en: '⌫', ru: '⌫' },
   },
   {
     code: 'Tab',
     func: 'tab',
-    lang: { en: '⭾ Tab', ru: '⭾ Tab' },
+    value: { en: '⭾ Tab', ru: '⭾ Tab' },
   },
   {
     code: 'KeyQ',
     func: false,
-    lang: { en: 'q', ru: 'й' },
+    value: { en: 'q', ru: 'й' },
   },
   {
     code: 'KeyW',
     func: false,
-    lang: { en: 'w', ru: 'ц' },
+    value: { en: 'w', ru: 'ц' },
   },
   {
     code: 'KeyE',
     func: false,
-    lang: { en: 'e', ru: 'у' },
+    value: { en: 'e', ru: 'у' },
   },
   {
     code: 'KeyR',
     func: false,
-    lang: { en: 'r', ru: 'к' },
+    value: { en: 'r', ru: 'к' },
   },
   {
     code: 'KeyT',
     func: false,
-    lang: { en: 't', ru: 'е' },
+    value: { en: 't', ru: 'е' },
   },
   {
     code: 'KeyY',
     func: false,
-    lang: { en: 'y', ru: 'н' },
+    value: { en: 'y', ru: 'н' },
   },
   {
     code: 'KeyU',
     func: false,
-    lang: { en: 'u', ru: 'г' },
+    value: { en: 'u', ru: 'г' },
   },
   {
     code: 'KeyI',
     func: false,
-    lang: { en: 'i', ru: 'ш' },
+    value: { en: 'i', ru: 'ш' },
   },
   {
     code: 'KeyO',
     func: false,
-    lang: { en: 'o', ru: 'щ' },
+    value: { en: 'o', ru: 'щ' },
   },
   {
     code: 'KeyP',
     func: false,
-    lang: { en: 'p', ru: 'з' },
+    value: { en: 'p', ru: 'з' },
   },
   {
     code: 'BracketLeft',
     func: false,
-    lang: { en: '[', ru: 'х' },
+    value: { en: '[', ru: 'х' },
+    altvalue: { en: '{', ru: 'Х' },
   },
   {
     code: 'BracketRight',
     func: false,
-    lang: { en: ']', ru: 'ъ' },
+    value: { en: ']', ru: 'ъ' },
+    altvalue: { en: '}', ru: 'Ъ' },
   },
   {
     code: 'Backslash',
     func: false,
-    lang: { en: '\\', ru: '\\' },
+    value: { en: '\\', ru: '\\' },
+    altvalue: { en: '|', ru: '/' },
   },
   {
     code: 'Delete',
     func: 'del',
-    lang: { en: 'Del', ru: 'Del' },
+    value: { en: 'Del', ru: 'Del' },
   },
   {
     code: 'CapsLock',
     func: 'capslock',
-    lang: { en: 'Caps', ru: 'Caps' },
+    value: { en: 'Caps', ru: 'Caps' },
   },
   {
     code: 'KeyA',
     func: false,
-    lang: { en: 'a', ru: 'ф' },
+    value: { en: 'a', ru: 'ф' },
   },
   {
     code: 'KeyS',
     func: false,
-    lang: { en: 's', ru: 'ы' },
+    value: { en: 's', ru: 'ы' },
   },
   {
     code: 'KeyD',
     func: false,
-    lang: { en: 'd', ru: 'в' },
+    value: { en: 'd', ru: 'в' },
   },
   {
     code: 'KeyF',
     func: false,
-    lang: { en: 'f', ru: 'а' },
+    value: { en: 'f', ru: 'а' },
   },
   {
     code: 'KeyG',
     func: false,
-    lang: { en: 'g', ru: 'п' },
+    value: { en: 'g', ru: 'п' },
   },
   {
     code: 'KeyH',
     func: false,
-    lang: { en: 'h', ru: 'р' },
+    value: { en: 'h', ru: 'р' },
   },
   {
     code: 'KeyJ',
     func: false,
-    lang: { en: 'j', ru: 'о' },
+    value: { en: 'j', ru: 'о' },
   },
   {
     code: 'KeyK',
     func: false,
-    lang: { en: 'k', ru: 'л' },
+    value: { en: 'k', ru: 'л' },
   },
   {
     code: 'KeyL',
     func: false,
-    lang: { en: 'l', ru: 'д' },
+    value: { en: 'l', ru: 'д' },
   },
   {
     code: 'Semicolon',
     func: false,
-    lang: { en: ';', ru: 'ж' },
+    value: { en: ';', ru: 'ж' },
+    altvalue: { en: ':', ru: 'Ж' },
   },
   {
     code: 'Quote',
     func: false,
-    lang: { en: "'", ru: 'э' },
+    value: { en: "'", ru: 'э' },
+    altvalue: { en: '"', ru: 'Э' },
   },
   {
     code: 'Enter',
     func: 'enter',
-    lang: { en: '⏎  Enter', ru: '⏎  Enter' },
+    value: { en: '⏎  Enter', ru: '⏎  Enter' },
   },
   {
     code: 'ShiftLeft',
     func: 'shift',
-    lang: { en: '⇧  Shift', ru: '⇧  Shift' },
+    value: { en: '⇧  Shift', ru: '⇧  Shift' },
   },
   {
     code: 'KeyZ',
     func: false,
-    lang: { en: 'z', ru: 'я' },
+    value: { en: 'z', ru: 'я' },
   },
   {
     code: 'KeyX',
     func: false,
-    lang: { en: 'x', ru: 'ч' },
+    value: { en: 'x', ru: 'ч' },
   },
   {
     code: 'KeyC',
     func: false,
-    lang: { en: 'c', ru: 'с' },
+    value: { en: 'c', ru: 'с' },
   },
   {
     code: 'KeyV',
     func: false,
-    lang: { en: 'v', ru: 'м' },
+    value: { en: 'v', ru: 'м' },
   },
   {
     code: 'KeyB',
     func: false,
-    lang: { en: 'b', ru: 'и' },
+    value: { en: 'b', ru: 'и' },
   },
   {
     code: 'KeyN',
     func: false,
-    lang: { en: 'n', ru: 'т' },
+    value: { en: 'n', ru: 'т' },
   },
   {
     code: 'KeyM',
     func: false,
-    lang: { en: 'm', ru: 'ь' },
+    value: { en: 'm', ru: 'ь' },
   },
   {
     code: 'Comma',
     func: false,
-    lang: { en: ',', ru: 'б' },
+    value: { en: ',', ru: 'б' },
+    altvalue: { en: '<', ru: 'Б' },
   },
   {
     code: 'Period',
     func: false,
-    lang: { en: '.', ru: 'ю' },
+    value: { en: '.', ru: 'ю' },
+    altvalue: { en: '>', ru: 'Ю' },
   },
   {
     code: 'Slash',
     func: false,
-    lang: { en: '/', ru: '.' },
+    value: { en: '/', ru: '.' },
+    altvalue: { en: '?', ru: ','},
   },
   {
     code: 'ArrowUp',
     func: 'arrowup',
-    lang: { en: '⯅', ru: '⯅' },
+    value: { en: '⯅', ru: '⯅' },
   },
   {
     code: 'ShiftRight',
     func: 'shift',
-    lang: { en: 'Shift ⇧', ru: 'Shift ⇧' },
+    value: { en: 'Shift ⇧', ru: 'Shift ⇧' },
   },
   {
     code: 'ControlLeft',
     func: 'leftctrl',
-    lang: { en: 'Ctrl', ru: 'Ctrl' },
+    value: { en: 'Ctrl', ru: 'Ctrl' },
   },
   {
     code: 'MetaLeft',
     func: 'meta',
-    lang: { en: '⊞', ru: '⊞' },
+    value: { en: '⊞', ru: '⊞' },
   },
   {
     code: 'AltLeft',
     func: 'alt',
-    lang: { en: 'Alt', ru: 'Alt' },
+    value: { en: 'Alt', ru: 'Alt' },
   },
   {
     code: 'Space',
     func: 'space',
-    lang: { en: ' ', ru: ' ' },
+    value: { en: ' ', ru: ' ' },
   },
   {
     code: 'AltRight',
     func: 'alt',
-    lang: { en: 'Alt', ru: 'Alt' },
+    value: { en: 'Alt', ru: 'Alt' },
   },
-    {
+  {
     code: 'ArrowLeft',
     func: 'arrowleft',
-    lang: { en: '⯇', ru: '⯇' },
+    value: { en: '⯇', ru: '⯇' },
   },
   {
     code: 'ArrowDown',
     func: 'arrowdown',
-    lang: { en: '⯆', ru: '⯆' },
+    value: { en: '⯆', ru: '⯆' },
   },
   {
     code: 'ArrowRight',
     func: 'arrowrigth',
-    lang: { en: '⯈', ru: '⯈' },
+    value: { en: '⯈', ru: '⯈' },
   },
   {
     code: 'ControlRight',
     func: 'ctrl',
-    lang: { en: 'Ctrl', ru: 'Ctrl' },
+    value: { en: 'Ctrl', ru: 'Ctrl' },
   },
 ];
 
-export default { keyboard };
+const keyboardValues = {};
+
+const keyboardKeys = document.createElement('div');
+keyboard.forEach((el) => {
+  keyboardValues[el.code] = el.value;
+  keyboardValues[el.code].func = el.func;
+  if (Object.hasOwn(el, 'altvalue')) {
+    keyboardValues[el.code].altvalue = el.altvalue;
+  }
+  const key = document.createElement('div');
+  key.textContent = el.value.en;
+  key.id = el.code;
+  key.classList.add('key');
+  if (el.func) key.classList.add(el.func);
+  keyboardKeys.appendChild(key);
+});
+
+export { keyboardValues, keyboardKeys };
