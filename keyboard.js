@@ -67,12 +67,12 @@ const keyboard = [
   {
     code: 'Backspace',
     func: 'backspace',
-    lang: { en: '&#9003;', ru: '&#9003;' },
+    lang: { en: '⌫', ru: '⌫' },
   },
   {
     code: 'Tab',
     func: 'tab',
-    lang: { en: '&#11134; Tab', ru: '&#11134; Tab' },
+    lang: { en: '⭾ Tab', ru: '⭾ Tab' },
   },
   {
     code: 'KeyQ',
@@ -207,12 +207,12 @@ const keyboard = [
   {
     code: 'Enter',
     func: 'enter',
-    lang: { en: '&#9166;  Enter', ru: '&#9166;  Enter' },
+    lang: { en: '⏎  Enter', ru: '⏎  Enter' },
   },
   {
     code: 'ShiftLeft',
     func: 'shift',
-    lang: { en: '&#8679;  Shift', ru: '&#8679;  Shift' },
+    lang: { en: '⇧  Shift', ru: '⇧  Shift' },
   },
   {
     code: 'KeyZ',
@@ -272,17 +272,17 @@ const keyboard = [
   {
     code: 'ShiftRight',
     func: 'shift',
-    lang: { en: 'Shift &#8679;', ru: 'Shift &#8679;' },
+    lang: { en: 'Shift ⇧', ru: 'Shift ⇧' },
   },
   {
     code: 'ControlLeft',
-    func: 'ctrl leftctrl',
+    func: 'leftctrl',
     lang: { en: 'Ctrl', ru: 'Ctrl' },
   },
   {
     code: 'MetaLeft',
     func: 'meta',
-    lang: { en: '&#8862;', ru: '&#8862;' },
+    lang: { en: '⊞', ru: '⊞' },
   },
   {
     code: 'AltLeft',
@@ -291,7 +291,7 @@ const keyboard = [
   },
   {
     code: 'Space',
-    func: false,
+    func: 'space',
     lang: { en: ' ', ru: ' ' },
   },
   {
