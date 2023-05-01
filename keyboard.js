@@ -63,13 +63,13 @@ const keyboard = [
     code: 'Digit0',
     func: false,
     value: { en: '0', ru: '0' },
-    altvalue: { en: ')', ru: ")" },
+    altvalue: { en: ')', ru: ')' },
   },
   {
     code: 'Minus',
     func: false,
     value: { en: '-', ru: '-' },
-    altvalue: { en: '_', ru: '_'},
+    altvalue: { en: '_', ru: '_' },
   },
   {
     code: 'Equal',
@@ -163,7 +163,7 @@ const keyboard = [
   {
     code: 'CapsLock',
     func: 'capslock',
-    value: { en: 'Caps', ru: 'Caps' },
+    value: { en: 'Caps Lock', ru: 'Caps Lock' },
   },
   {
     code: 'KeyA',
@@ -283,11 +283,11 @@ const keyboard = [
     code: 'Slash',
     func: false,
     value: { en: '/', ru: '.' },
-    altvalue: { en: '?', ru: ','},
+    altvalue: { en: '?', ru: ',' },
   },
   {
     code: 'ArrowUp',
-    func: 'arrowup',
+    func: false,
     value: { en: '⯅', ru: '⯅' },
   },
   {
@@ -322,17 +322,17 @@ const keyboard = [
   },
   {
     code: 'ArrowLeft',
-    func: 'arrowleft',
+    func: false,
     value: { en: '⯇', ru: '⯇' },
   },
   {
     code: 'ArrowDown',
-    func: 'arrowdown',
+    func: false,
     value: { en: '⯆', ru: '⯆' },
   },
   {
     code: 'ArrowRight',
-    func: 'arrowrigth',
+    func: false,
     value: { en: '⯈', ru: '⯈' },
   },
   {

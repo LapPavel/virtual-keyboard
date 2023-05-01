@@ -71,25 +71,25 @@ function eraseChar() {
   }
 }
 
-function changeLanguage(lang, shift = false) {
+function changeLanguage(shift = false) {
   Array.from(document.querySelectorAll('.key')).forEach((el) => {
-    el.textContent = keyboardValues[el.id][lang];
+    const l = el;
+    l.textContent = keyboardValues[el.id][lang];
   });
   changeShift(shift);
 }
 
 document.addEventListener('keydown', (event) => {
   event.stopImmediatePropagation();
-
   const key = document.querySelector(`#${event.code}`);
   textarea.focus();
   if (!key) {
     event.preventDefault();
     return;
   }
-  
-  if (event.code === 'CapsLock') {
-    caps = event.getModifierState('CapsLock');
+
+  if (event.code === 'CapsLock' && !event.repeat) {
+    caps = !caps;
     const capsStatus = caps ? 'add' : 'remove';
     key.classList[capsStatus]('key_active');
     changeShift(event.shiftKey);
@@ -116,10 +116,10 @@ document.addEventListener('keydown', (event) => {
     } else if (event.code === 'Space') {
       event.preventDefault();
       addChar(' ');
-    } else if (event.ctrlKey && event.altKey) {
+    } else if (event.ctrlKey && event.altKey && !event.repeat) {
       event.preventDefault();
       lang = lang === 'ru' ? 'en' : 'ru';
-      changeLanguage(lang, event.shiftKey);
+      changeLanguage(event.shiftKey);
     }
   }
 });
@@ -139,5 +139,26 @@ document.addEventListener('keyup', (event) => {
       event.preventDefault();
       changeShift(event.shiftKey);
     }
+  }
+});
+
+keyboardKeys.addEventListener('click', (event) => {
+  if (event.target.id === 'ShiftLeft' || event.target.id === 'ShiftRight') {
+    let shift = !event.target.classList.contains('key_active');
+    changeShift(shift);
+  } else {
+    const pressKeyDown = new KeyboardEvent('keydown', {
+      bubbles: true,
+      code: event.target.id,
+    });
+    keyboardKeys.dispatchEvent(pressKeyDown);
+    const pressKeyUp = new KeyboardEvent('keyup', {
+      bubbles: true,
+      code: event.target.id,
+    });
+    keyboardKeys.dispatchEvent(pressKeyUp);
+  }
+  if (event.target.id === 'ShiftLeft' || event.target.id === 'ShiftRight') {
+    event.target.classList.toggle('key_active');
   }
 });
