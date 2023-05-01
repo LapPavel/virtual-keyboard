@@ -2,7 +2,6 @@ import { keyboardValues, keyboardKeys } from './keyboard.js';
 
 let lang = 'en';
 let caps = false;
-console.log(keyboardValues);
 
 function createPage() {
   const bodyPage = document.querySelector('.body');
@@ -23,7 +22,6 @@ function createPage() {
 createPage();
 
 const textarea = document.querySelector('.textarea');
-const funBtn = '.shift, .enter, .backspace, .capslock, .leftctrl, .tab, .ctrl, .alt, .del';
 
 function changeShift(shiftKey) {
   const whichCase = (caps && !shiftKey) || (!caps && shiftKey) ? 'toUpperCase' : 'toLowerCase';
@@ -32,8 +30,8 @@ function changeShift(shiftKey) {
       if (Object.hasOwn(keyboardValues[el.id], 'altvalue')) {
         const l = el;
         l.textContent = shiftKey
-          ? keyboardValues[el.id].altvalue[lang]
-          : keyboardValues[el.id][lang];
+          ? keyboardValues[el.id].altvalue[lang][whichCase]()
+          : keyboardValues[el.id][lang][whichCase]();
       } else {
         const l = el;
         l.textContent = l.textContent[whichCase]();
@@ -42,42 +40,104 @@ function changeShift(shiftKey) {
   });
 }
 
+function addChar(str) {
+  const position = textarea.selectionStart;
+  const text = textarea.value;
+  textarea.value = text.slice(0, position) + str + text.slice(textarea.selectionEnd);
+  textarea.selectionStart = position + str.length;
+  textarea.selectionEnd = textarea.selectionStart;
+}
+
+function delChar() {
+  if (textarea.selectionStart !== textarea.selectionEnd) {
+    addChar('');
+  } else {
+    const position = textarea.selectionStart;
+    textarea.value = textarea.value.slice(0, position) + textarea.value.slice(position + 1);
+    textarea.selectionStart = position;
+    textarea.selectionEnd = textarea.selectionStart;
+  }
+}
+
+function eraseChar() {
+  if (textarea.selectionStart !== textarea.selectionEnd) {
+    addChar('');
+  } else {
+    const position = textarea.selectionStart - 1;
+    const text = textarea.value;
+    textarea.value = text.slice(0, position) + text.slice(textarea.selectionEnd);
+    textarea.selectionStart = position;
+    textarea.selectionEnd = textarea.selectionStart;
+  }
+}
+
+function changeLanguage(lang, shift = false) {
+  Array.from(document.querySelectorAll('.key')).forEach((el) => {
+    el.textContent = keyboardValues[el.id][lang];
+  });
+  changeShift(shift);
+}
+
 document.addEventListener('keydown', (event) => {
-  // event.preventDefault();
+  event.stopImmediatePropagation();
+
   const key = document.querySelector(`#${event.code}`);
+  textarea.focus();
   if (!key) {
+    event.preventDefault();
     return;
   }
-  if (event.key === 'CapsLock') {
+  
+  if (event.code === 'CapsLock') {
     caps = event.getModifierState('CapsLock');
     const capsStatus = caps ? 'add' : 'remove';
     key.classList[capsStatus]('key_active');
     changeShift(event.shiftKey);
-    /* const shift = document.querySelectorAll('.shift');
-    shift[event.location - 1].classList.add('key_active');
-    const keys = document.querySelectorAll(`.key:not(${funBtn})`);
-    keys.forEach((el) => {
-      const l = el;
-      l.textContent = l.textContent.toUpperCase();
-    }); */
   } else {
     key.classList.add('key_active');
-    textarea.textContent += key.textContent;
+    if (!keyboardValues[event.code].func) {
+      event.preventDefault();
+      addChar(key.textContent);
+    } else if (event.code === 'ShiftLeft' || event.code === 'ShiftRight') {
+      event.preventDefault();
+      changeShift(event.shiftKey);
+    } else if (event.code === 'Backspace') {
+      event.preventDefault();
+      eraseChar();
+    } else if (event.code === 'Tab') {
+      event.preventDefault();
+      addChar('\t');
+    } else if (event.code === 'Enter') {
+      event.preventDefault();
+      addChar('\n');
+    } else if (event.code === 'Delete') {
+      event.preventDefault();
+      delChar();
+    } else if (event.code === 'Space') {
+      event.preventDefault();
+      addChar(' ');
+    } else if (event.ctrlKey && event.altKey) {
+      event.preventDefault();
+      lang = lang === 'ru' ? 'en' : 'ru';
+      changeLanguage(lang, event.shiftKey);
+    }
   }
 });
 
 document.addEventListener('keyup', (event) => {
-  if (event.key === 'Shift') {
-    const shift = document.querySelectorAll('.shift');
-    shift[event.location - 1].classList.remove('key_active');
-    const arr = document.querySelectorAll(`.key:not(${funBtn})`);
-    arr.forEach((el) => {
-      const l = el;
-      l.textContent = l.textContent.toLowerCase();
-    });
-  } else {
-    const arr = document.querySelectorAll('.key');
-    const btn = arr[Array.from(arr).findIndex((el) => el.textContent === event.key)];
-    btn.classList.remove('key_active');
+  event.stopImmediatePropagation();
+
+  const key = document.querySelector(`#${event.code}`);
+  if (!key) {
+    event.preventDefault();
+    return;
+  }
+
+  if (event.code !== 'CapsLock') {
+    key.classList.remove('key_active');
+    if (event.key === 'Shift') {
+      event.preventDefault();
+      changeShift(event.shiftKey);
+    }
   }
 });
