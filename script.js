@@ -1,6 +1,6 @@
 import { keyboardValues, keyboardKeys } from './keyboard.js';
 
-let lang = 'en';
+let lang = localStorage.getItem('lang') === 'ru' ? 'ru' : 'en';
 let caps = false;
 
 function createPage() {
@@ -22,6 +22,7 @@ function createPage() {
 createPage();
 
 const textarea = document.querySelector('.textarea');
+const keysShift = document.querySelectorAll('.shift');
 
 function changeShift(shiftKey) {
   const whichCase = (caps && !shiftKey) || (!caps && shiftKey) ? 'toUpperCase' : 'toLowerCase';
@@ -79,9 +80,11 @@ function changeLanguage(shift = false) {
   changeShift(shift);
 }
 
+changeLanguage();
+
 document.addEventListener('keydown', (event) => {
   event.stopImmediatePropagation();
-  const key = document.querySelector(`#${event.code}`);
+  const key = document.getElementById(event.code);
   textarea.focus();
   if (!key) {
     event.preventDefault();
@@ -119,6 +122,7 @@ document.addEventListener('keydown', (event) => {
     } else if (event.ctrlKey && event.altKey && !event.repeat) {
       event.preventDefault();
       lang = lang === 'ru' ? 'en' : 'ru';
+      localStorage.setItem('lang', lang);
       changeLanguage(event.shiftKey);
     }
   }
@@ -127,7 +131,7 @@ document.addEventListener('keydown', (event) => {
 document.addEventListener('keyup', (event) => {
   event.stopImmediatePropagation();
 
-  const key = document.querySelector(`#${event.code}`);
+  const key = document.getElementById(event.code);
   if (!key) {
     event.preventDefault();
     return;
@@ -143,22 +147,21 @@ document.addEventListener('keyup', (event) => {
 });
 
 keyboardKeys.addEventListener('click', (event) => {
-  if (event.target.id === 'ShiftLeft' || event.target.id === 'ShiftRight') {
-    let shift = !event.target.classList.contains('key_active');
+  if (event.target.classList.contains('shift')) {
+    const shift = !event.target.classList.contains('key_active');
     changeShift(shift);
+    keysShift.forEach((el) => el.classList[shift ? 'add' : 'remove']('key_active'));
   } else {
-    const pressKeyDown = new KeyboardEvent('keydown', {
+    const option = {
       bubbles: true,
       code: event.target.id,
-    });
+    };
+    if ([...keysShift].find((el) => el.classList.contains('key_active'))) {
+      option.shiftKey = true;
+    }
+    const pressKeyDown = new KeyboardEvent('keydown', option);
     keyboardKeys.dispatchEvent(pressKeyDown);
-    const pressKeyUp = new KeyboardEvent('keyup', {
-      bubbles: true,
-      code: event.target.id,
-    });
+    const pressKeyUp = new KeyboardEvent('keyup', option);
     keyboardKeys.dispatchEvent(pressKeyUp);
-  }
-  if (event.target.id === 'ShiftLeft' || event.target.id === 'ShiftRight') {
-    event.target.classList.toggle('key_active');
   }
 });
